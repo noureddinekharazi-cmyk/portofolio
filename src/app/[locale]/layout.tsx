@@ -31,7 +31,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'meta' });
 
   const languages = {
-    fr: '/',
+    fr: '/fr',
     en: '/en',
   };
 
@@ -43,13 +43,13 @@ export async function generateMetadata({
     },
     description: t('description'),
     alternates: {
-      canonical: locale === 'fr' ? '/' : '/en',
-      languages: { ...languages, 'x-default': '/' },
+      canonical: `/${locale}`,
+      languages: { ...languages, 'x-default': '/fr' },
     },
     openGraph: {
       type: 'website',
       locale: locale === 'fr' ? 'fr_FR' : 'en_US',
-      url: locale === 'fr' ? SITE_URL : `${SITE_URL}/en`,
+      url: `${SITE_URL}/${locale}`,
       title: t('title'),
       description: t('description'),
       siteName: 'Nour Eddine Kharazi',

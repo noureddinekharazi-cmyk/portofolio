@@ -42,18 +42,18 @@ export async function generateMetadata({
     title: fm.title,
     description: fm.summary,
     alternates: {
-      canonical: locale === 'fr' ? path : `/en${path}`,
+      canonical: `/${locale}${path}`,
       languages: {
-        fr: path,
+        fr: `/fr${path}`,
         en: `/en${path}`,
-        'x-default': path,
+        'x-default': `/fr${path}`,
       },
     },
     openGraph: {
       type: 'article',
       title: fm.title,
       description: fm.summary,
-      url: `${SITE_URL}${locale === 'fr' ? '' : '/en'}${path}`,
+      url: `${SITE_URL}/${locale}${path}`,
     },
   };
 }

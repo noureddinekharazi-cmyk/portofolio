@@ -4,8 +4,9 @@ import { getCaseSlugs } from '@/lib/cases';
 import { SITE_URL } from '@/lib/site';
 
 function localizedUrl(locale: string, path: string) {
-  const prefix = locale === routing.defaultLocale ? '' : `/${locale}`;
-  return `${SITE_URL}${prefix}${path}`;
+  // Locales are always prefixed (see routing.ts).
+  const suffix = path === '/' ? '' : path;
+  return `${SITE_URL}/${locale}${suffix}`;
 }
 
 function alternates(path: string) {

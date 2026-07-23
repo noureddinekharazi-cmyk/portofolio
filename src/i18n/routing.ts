@@ -3,11 +3,11 @@ import { defineRouting } from 'next-intl/routing';
 export const routing = defineRouting({
   locales: ['fr', 'en'],
   defaultLocale: 'fr',
-  // FR is served at "/", EN at "/en". Language choice persists in the URL and
-  // the NEXT_LOCALE cookie via the switcher.
-  localePrefix: 'as-needed',
-  // Deterministic default: "/" always renders FR (no Accept-Language redirect).
-  // Keeps the brand default stable and removes a redirect hop on the LCP path.
+  // Locales are always prefixed: /fr and /en are real, statically generated
+  // pages that render WITHOUT relying on middleware. "/" is redirected to /fr
+  // at the config level (next.config redirects) so the site is reachable on any
+  // host even if edge middleware isn't invoked. FR stays the default.
+  localePrefix: 'always',
   localeDetection: false,
   localeCookie: {
     name: 'NEXT_LOCALE',
