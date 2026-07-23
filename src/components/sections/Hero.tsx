@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { getSiteContent } from '@/lib/content';
-import { PROFILE } from '@/lib/site';
+import { PROFILE, resolveCv } from '@/lib/site';
 import { ButtonLink, ButtonAnchor } from '@/components/ui/Button';
 import { HeroBackdrop } from './HeroBackdrop';
 
@@ -24,7 +24,7 @@ function escapeRegExp(s: string) {
 export async function Hero({ locale }: { locale: string }) {
   const t = await getTranslations();
   const { hero } = getSiteContent(locale);
-  const cvHref = locale === 'en' ? PROFILE.cv.en : PROFILE.cv.fr;
+  const cvHref = resolveCv(locale).href;
 
   return (
     <section className="relative overflow-hidden">

@@ -23,7 +23,20 @@ export const PROFILE = {
     fr: '/cv/nour-eddine-kharazi-fr.pdf',
     en: '/cv/nour-eddine-kharazi-en.pdf',
   },
+  // Flip fr → true once the FR PDF is dropped into public/cv/ (see README).
+  cvAvailable: {
+    fr: false,
+    en: true,
+  },
 } as const;
+
+/** Best available CV for a locale — falls back to EN until the FR PDF is provided. */
+export function resolveCv(locale: string): { href: string; lang: 'fr' | 'en' } {
+  if (locale === 'fr' && PROFILE.cvAvailable.fr) {
+    return { href: PROFILE.cv.fr, lang: 'fr' };
+  }
+  return { href: PROFILE.cv.en, lang: 'en' };
+}
 
 export const CASE_SLUGS = [
   'seo-operating-system',
