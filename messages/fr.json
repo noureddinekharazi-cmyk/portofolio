@@ -1,0 +1,90 @@
+{
+  "meta": {
+    "title": "Nour Eddine Kharazi — Digital Marketing Specialist",
+    "description": "Data, SEO, automatisation : je transforme des process marketing en systèmes qui tournent seuls. Résultats mesurables pour ETI et grands groupes.",
+    "ogAlt": "Nour Eddine Kharazi — Digital Marketing Specialist"
+  },
+  "nav": {
+    "brand": "Nour Eddine Kharazi",
+    "results": "Résultats",
+    "cases": "Études de cas",
+    "stack": "Stack",
+    "labs": "Labs",
+    "path": "Parcours",
+    "contact": "Contact",
+    "menu": "Menu",
+    "close": "Fermer",
+    "skipToContent": "Aller au contenu"
+  },
+  "lang": {
+    "label": "Langue",
+    "fr": "FR",
+    "en": "EN",
+    "switchTo": "Switch to English"
+  },
+  "cta": {
+    "seeResults": "Voir les résultats",
+    "downloadCv": "Télécharger le CV",
+    "readCase": "Lire l'étude de cas",
+    "allCases": "Toutes les études de cas",
+    "backHome": "Retour à l'accueil",
+    "contactMe": "Me contacter",
+    "email": "Envoyer un email"
+  },
+  "sections": {
+    "resultsKicker": "Résultats mesurables",
+    "resultsTitle": "Cinq chiffres, cinq systèmes",
+    "resultsIntro": "Chaque chiffre renvoie à l'étude de cas qui l'a produit. Cliquez pour voir la méthode.",
+    "casesKicker": "Études de cas",
+    "casesTitle": "Comment ces résultats ont été construits",
+    "casesIntro": "Contexte, obstacle réel, exécution, résultat mesuré. Chaque cas se lit en 60 à 90 secondes.",
+    "stackKicker": "Stack & expertise",
+    "stackTitle": "Les outils, groupés par usage",
+    "stackIntro": "Niveau de maîtrise indicatif, construit sur des projets en production.",
+    "labsKicker": "Labs",
+    "labsTitle": "Un profil marketing qui construit ses propres outils",
+    "labsIntro": "Projets personnels traités comme des systèmes, pas comme une liste.",
+    "pathKicker": "Parcours",
+    "pathTitle": "Expériences, formation, certifications",
+    "contactKicker": "Contact",
+    "contactTitle": "Parlons de votre prochain système marketing"
+  },
+  "case": {
+    "context": "Contexte",
+    "problem": "Problème",
+    "approach": "Approche & exécution",
+    "obstacle": "L'obstacle",
+    "result": "Résultat",
+    "stack": "Stack utilisée",
+    "measure": "Méthode de mesure",
+    "illustrative": "Visualisation illustrative",
+    "illustrativeNote": "Rendu stylisé — pas une capture d'écran authentique. Les chiffres réels sont dans le texte.",
+    "realScreenshot": "Capture réelle",
+    "linkedTag": "Rattaché à",
+    "prev": "Cas précédent",
+    "next": "Cas suivant"
+  },
+  "labels": {
+    "availability": "Disponible en CDI — septembre 2026",
+    "location": "Paris, Île-de-France",
+    "mobility": "Mobilité France & international",
+    "role": "Digital Marketing Specialist",
+    "focus": "CRM · SEO technique · Automatisation",
+    "level": "Maîtrise",
+    "certifications": "Certifications",
+    "education": "Formation",
+    "experience": "Expérience",
+    "now": "Aujourd'hui",
+    "recommendations": "Recommandations",
+    "recommendationsEmpty": "Lettres de recommandation disponibles sur demande."
+  },
+  "footer": {
+    "built": "Portfolio conçu et développé par Nour Eddine Kharazi.",
+    "rights": "Tous droits réservés."
+  },
+  "a11y": {
+    "metricLink": "Voir l'étude de cas liée à ce résultat",
+    "openMenu": "Ouvrir le menu de navigation",
+    "closeMenu": "Fermer le menu de navigation"
+  }
+}

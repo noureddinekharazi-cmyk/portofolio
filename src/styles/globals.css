@@ -1,0 +1,210 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------ *
+ * Design system — "Signal"
+ * Near-black canvas, a single cyan accent, monospace data labels.
+ * All text tokens verified WCAG AA on the --color-base background.
+ * ------------------------------------------------------------------ */
+@theme {
+  /* Surfaces */
+  --color-base: #0a0b0d; /* page background */
+  --color-surface: #12151b; /* raised panels */
+  --color-surface-2: #191d25; /* elevated / hover */
+  --color-line: #242932; /* hairline borders */
+  --color-line-strong: #333a45;
+
+  /* Ink (contrast on --color-base) */
+  --color-ink: #e9ecf1; /* 15.6:1  AAA */
+  --color-muted: #a6adb8; /*  8.1:1  AAA */
+  --color-faint: #838b97; /*  5.0:1  AA  — measurement notes */
+
+  /* Accent — signal cyan */
+  --color-accent: #5ee6ff; /* 12.4:1 on base */
+  --color-accent-strong: #34d6f5;
+  --color-accent-ink: #04141b; /* text placed on an accent fill */
+  --color-accent-glow: color-mix(in oklab, #5ee6ff 22%, transparent);
+
+  /* Typography — 2 families, self-hosted via next/font (geist) */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, 'SFMono-Regular', monospace;
+
+  /* Modular type scale (1.25 minor third), fluid */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+  --text-3xl: clamp(1.95rem, 1.5rem + 2vw, 2.85rem);
+  --text-4xl: clamp(2.6rem, 1.9rem + 3.4vw, 4.2rem);
+  --text-5xl: clamp(3.1rem, 2rem + 5vw, 5.6rem);
+
+  /* Radii */
+  --radius-sm: 0.375rem;
+  --radius: 0.625rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+
+  /* Easing + durations (150–400ms per brief) */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Layout */
+  --container: 74rem;
+}
+
+/* ------------------------------------------------------------------ *
+ * Base
+ * ------------------------------------------------------------------ */
+@layer base {
+  * {
+    border-color: var(--color-line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5.5rem; /* anchored nav offset */
+  }
+
+  body {
+    background-color: var(--color-base);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: 'ss01', 'cv01', 'cv11';
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+    line-height: 1.05;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-accent-ink);
+  }
+
+  /* Visible, consistent focus for keyboard users */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 3px;
+  }
+
+  /* Custom scrollbar (progressive enhancement) */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-base);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-line-strong);
+    border-radius: 999px;
+    border: 2px solid var(--color-base);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #454d59;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Reusable utilities
+ * ------------------------------------------------------------------ */
+@layer utilities {
+  .container-x {
+    width: 100%;
+    max-width: var(--container);
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 5vw, 3rem);
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .data-label {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    color: var(--color-muted);
+  }
+
+  .hairline {
+    background-image: linear-gradient(
+      to right,
+      transparent,
+      var(--color-line-strong) 15%,
+      var(--color-line-strong) 85%,
+      transparent
+    );
+    height: 1px;
+  }
+
+  /* Faint grid backdrop — a "systems" texture, very low contrast */
+  .grid-backdrop {
+    background-image:
+      linear-gradient(var(--color-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-line) 1px, transparent 1px);
+    background-size: 56px 56px;
+    background-position: center;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 20%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 20%, transparent 75%);
+  }
+
+  .accent-glow {
+    box-shadow: 0 0 0 1px var(--color-line), 0 24px 60px -30px var(--color-accent-glow);
+  }
+
+  .text-gradient {
+    background: linear-gradient(180deg, var(--color-ink) 30%, var(--color-muted));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Accessible skip link — hidden until focused */
+  .skip-link {
+    position: fixed;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 100;
+    transform: translateY(-150%);
+    background: var(--color-accent);
+    color: var(--color-accent-ink);
+    padding: 0.5rem 0.9rem;
+    border-radius: var(--radius-sm);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    transition: transform 0.2s var(--ease-out);
+  }
+  .skip-link:focus {
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "meta": {
+    "title": "Nour Eddine Kharazi — Digital Marketing Specialist",
+    "description": "Data, SEO, automation: I turn marketing processes into systems that run themselves. Measurable results for mid-market and enterprise organizations.",
+    "ogAlt": "Nour Eddine Kharazi — Digital Marketing Specialist"
+  },
+  "nav": {
+    "brand": "Nour Eddine Kharazi",
+    "results": "Results",
+    "cases": "Case studies",
+    "stack": "Stack",
+    "labs": "Labs",
+    "path": "Background",
+    "contact": "Contact",
+    "menu": "Menu",
+    "close": "Close",
+    "skipToContent": "Skip to content"
+  },
+  "lang": {
+    "label": "Language",
+    "fr": "FR",
+    "en": "EN",
+    "switchTo": "Passer en français"
+  },
+  "cta": {
+    "seeResults": "See the results",
+    "downloadCv": "Download CV",
+    "readCase": "Read the case study",
+    "allCases": "All case studies",
+    "backHome": "Back to home",
+    "contactMe": "Get in touch",
+    "email": "Send an email"
+  },
+  "sections": {
+    "resultsKicker": "Measurable results",
+    "resultsTitle": "Five numbers, five systems",
+    "resultsIntro": "Every number links to the case study that produced it. Click to see the method.",
+    "casesKicker": "Case studies",
+    "casesTitle": "How these results were built",
+    "casesIntro": "Context, the real obstacle, execution, measured result. Each case reads in 60 to 90 seconds.",
+    "stackKicker": "Stack & expertise",
+    "stackTitle": "The tools, grouped by use",
+    "stackIntro": "Indicative proficiency, built on production projects.",
+    "labsKicker": "Labs",
+    "labsTitle": "A marketer who builds his own tools",
+    "labsIntro": "Personal projects treated as systems, not as a list.",
+    "pathKicker": "Background",
+    "pathTitle": "Experience, education, certifications",
+    "contactKicker": "Contact",
+    "contactTitle": "Let's talk about your next marketing system"
+  },
+  "case": {
+    "context": "Context",
+    "problem": "Problem",
+    "approach": "Approach & execution",
+    "obstacle": "The obstacle",
+    "result": "Result",
+    "stack": "Stack used",
+    "measure": "Measurement method",
+    "illustrative": "Illustrative rendering",
+    "illustrativeNote": "Stylized rendering — not an authentic screenshot. The real figures are in the text.",
+    "realScreenshot": "Real screenshot",
+    "linkedTag": "Tied to",
+    "prev": "Previous case",
+    "next": "Next case"
+  },
+  "labels": {
+    "availability": "Available for a permanent role — September 2026",
+    "location": "Paris, Île-de-France",
+    "mobility": "Open to France & international",
+    "role": "Digital Marketing Specialist",
+    "focus": "CRM · Technical SEO · Automation",
+    "level": "Proficiency",
+    "certifications": "Certifications",
+    "education": "Education",
+    "experience": "Experience",
+    "now": "Present",
+    "recommendations": "Recommendations",
+    "recommendationsEmpty": "Reference letters available on request."
+  },
+  "footer": {
+    "built": "Portfolio designed and built by Nour Eddine Kharazi.",
+    "rights": "All rights reserved."
+  },
+  "a11y": {
+    "metricLink": "View the case study tied to this result",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu"
+  }
+}
