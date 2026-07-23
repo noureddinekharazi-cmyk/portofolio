@@ -1,5 +1,7 @@
 import { setRequestLocale } from 'next-intl/server';
 import { getTranslations } from 'next-intl/server';
+import { Hero } from '@/components/sections/Hero';
+import { MetricsBand } from '@/components/sections/MetricsBand';
 
 export default async function HomePage({
   params,
@@ -10,22 +12,27 @@ export default async function HomePage({
   setRequestLocale(locale);
   const t = await getTranslations();
 
-  const sections = ['results', 'cases', 'stack', 'labs', 'path', 'contact'];
+  // Sections built in later lots — anchors kept so the nav resolves.
+  const stubs = [
+    { id: 'cases', key: 'cases' },
+    { id: 'stack', key: 'stack' },
+    { id: 'labs', key: 'labs' },
+    { id: 'path', key: 'path' },
+    { id: 'contact', key: 'contact' },
+  ] as const;
 
   return (
     <>
-      <section className="container-x flex min-h-[60vh] flex-col justify-center py-32">
-        <p className="eyebrow">{t('labels.role')}</p>
-        <h1 className="mt-4 max-w-4xl text-4xl font-semibold text-gradient">
-          {locale === 'fr'
-            ? 'Data, SEO, automatisation : je transforme des process marketing en systèmes qui tournent seuls.'
-            : 'Data, SEO, automation: I turn marketing processes into systems that run themselves.'}
-        </h1>
-      </section>
-      {sections.map((id) => (
-        <section key={id} id={id} className="container-x scroll-mt-24 py-20">
+      <Hero locale={locale} />
+      <MetricsBand locale={locale} />
+      {stubs.map((s) => (
+        <section
+          key={s.id}
+          id={s.id}
+          className="container-x scroll-mt-24 py-16"
+        >
           <div className="hairline" />
-          <p className="eyebrow mt-8">{t(`nav.${id}`)}</p>
+          <p className="eyebrow mt-8">{t(`nav.${s.key}`)}</p>
         </section>
       ))}
     </>
