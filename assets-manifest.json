@@ -1,10 +1,38 @@
 {
   "$schema": "./assets-manifest.schema.json",
-  "description": "Inventaire des assets visuels. Chaque entree image porte 'source' = 'screenshot_reel' | 'genere_higgsfield'. Pour les visuels generes remplacant un screenshot, renseigner 'replaces'.",
+  "description": "Inventaire des assets visuels. Chaque image porte 'source' = 'schematic' (SVG codé, cf. src/components/case/Schematic.tsx) | 'genere_higgsfield' | 'screenshot_reel'. Pour un visuel généré/réel remplaçant un schematic, renseigner 'replaces' et le chemin dans /public/generated.",
   "charte_prompt": {
-    "palette": "fond quasi-noir #0A0B0D, un seul accent (a valider), neutres froids",
+    "palette": "fond quasi-noir #0A0B0D, un seul accent cyan #5EE6FF, neutres froids",
     "matiere_eclairage": "studio sombre, mat + reflets verre discrets, une source d'accent, faible profondeur de champ, grain fin",
-    "abstraction": "schematique/topographique, aucun texte, aucun chiffre, aucune UI de marque, aucune personne"
+    "abstraction": "schematique/topographique, aucun texte, aucun chiffre, aucune UI de marque, aucune personne",
+    "modele": "Higgsfield nano_banana_pro (nano_banana_2), 16:9, 1k"
   },
-  "assets": []
+  "illustrations_en_place": {
+    "type": "schematic (SVG codé, sur charte, étiqueté « visualisation illustrative »)",
+    "composant": "src/components/case/Schematic.tsx",
+    "variantes": {
+      "seo-operating-system": "system",
+      "automatisation-workflows": "flow",
+      "dashboards-looker": "dashboard",
+      "acquisition-b2b": "funnel",
+      "seo-technique": "curve"
+    },
+    "note": "Les schematics sont abstraits : aucune donnée chiffrée, aucune imitation d'UI de marque. Ils portent le badge « visualisation illustrative ». Ils tiennent lieu de visuels par défaut et sont remplaçables par un genere_higgsfield ou un screenshot_reel (cf. README)."
+  },
+  "assets": [
+    {
+      "id": "hero-signal",
+      "cible": "public/generated/hero-signal.webp",
+      "usage": "Fond décoratif du hero (sous le contenu, non-LCP, désactivé sous prefers-reduced-motion)",
+      "source": "genere_higgsfield",
+      "statut": "genere_non_telecharge",
+      "model": "Higgsfield nano_banana_pro (nano_banana_2)",
+      "job_id": "f4a3a609-e9bc-42d4-bdf5-90efbbc049d7",
+      "date": "2026-07-23",
+      "aspect_ratio": "16:9",
+      "prompt": "Abstract dark data topography for a premium tech hero background. Near-black #0a0b0d canvas, a single cyan accent light (#5EE6FF), matte surfaces with subtle glass reflections, flowing signal lines and a faint node lattice receding into shallow depth of field, fine film grain, schematic and minimal, wide negative space on the left for text, glow concentrated upper-right. No text, no numbers, no UI, no logos, no people.",
+      "cdn_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Eu6bmA2LHLzkTM1tZVborESXkU/hf_20260723_131630_f4a3a609-e9bc-42d4-bdf5-90efbbc049d7.png",
+      "note": "Généré via le MCP Higgsfield (pipeline validé). Le téléchargement du fichier dans /public/generated est bloqué DANS CET ENVIRONNEMENT par la politique d'egress (le CDN cloudfront renvoie 403). Pour l'activer : télécharger l'image depuis le CDN hors sandbox, l'optimiser en WebP dans public/generated/hero-signal.webp, puis passer HERO_IMAGE à ce chemin dans src/components/sections/HeroBackdrop.tsx. Tant que le fichier n'est pas présent, le hero utilise son fond CSS (aucun visuel cassé n'est servi)."
+    }
+  ]
 }

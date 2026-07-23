@@ -1,7 +1,8 @@
 # PLAN — Portfolio « Digital Marketing Specialist » · Nour Eddine Kharazi
 
-> Document de cadrage soumis à validation. **Aucun code applicatif n'est écrit avant ton feu vert** (cf. §0 du brief).
-> Statut : en attente de validation.
+> Document de cadrage. **Statut : validé et implémenté.**
+> Direction retenue : **« Signal » (dark) · accent cyan `#5EE6FF`** · visuels **hybride** ·
+> **Vercel Analytics**. Avancement détaillé dans `PROGRESS.md`.
 
 ---
 

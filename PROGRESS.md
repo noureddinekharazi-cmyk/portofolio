@@ -20,7 +20,7 @@ Journal d'avancement, tenu à jour lot par lot (cf. `PLAN.md` §7).
 | 2 — Études de cas | ✅ Fait (5 cas FR/EN, /case/[slug]) | 2026-07-23 |
 | 3 — Stack / Parcours / Labs | ✅ Fait | 2026-07-23 |
 | 4 — Contact | ✅ Fait | 2026-07-23 |
-| 5 — Assets Higgsfield | ⏳ Schematics SVG en place ; génération Higgsfield à faire | — |
+| 5 — Assets Higgsfield | 🟡 Schematics SVG en place ; pipeline Higgsfield validé ; téléchargement CDN bloqué (egress) | 2026-07-23 |
 | 6+7 — SEO / perf / a11y | ✅ Fait — Lighthouse mobile ≥90 ×4 | 2026-07-23 |
 
 ## Journal
@@ -48,6 +48,21 @@ Journal d'avancement, tenu à jour lot par lot (cf. `PLAN.md` §7).
     passe à 100 sur le domaine de prod). Détails : `docs/lighthouse-summary.md`.
   - Perf : retrait de framer-motion (reveals en transform pur), CLS = 0, TBT ≈ 50 ms.
   - Déploiement documenté : `docs/DEPLOY-VERCEL.md`. README complet.
+
+### 2026-07-23 — Lot 5 (Assets Higgsfield)
+- Illustrations en place : **schematics SVG codés** (system/flow/dashboard/funnel/curve),
+  sur charte, abstraits, badge « visualisation illustrative ». Performants, aucune
+  donnée sensible, aucune imitation d'UI de marque.
+- **Pipeline Higgsfield validé** : fond hero généré (nano_banana_pro, job
+  `f4a3a609…`, 2 crédits). **Mais le téléchargement du fichier depuis le CDN
+  (cloudfront) est bloqué par la politique d'egress de cet environnement (403).**
+  Impossible d'intégrer le bitmap en statique ici sans contourner la politique.
+- Provenance complète tracée dans `assets-manifest.json`. `HeroBackdrop` est
+  **prêt à recevoir** l'image (constante `HERO_IMAGE`) — tant que le fichier n'est
+  pas déposé dans `public/generated/`, le fond CSS est utilisé (aucun visuel cassé).
+- Reste à faire hors sandbox (ou avec egress ouvert) : télécharger les visuels,
+  optimiser en WebP, activer `HERO_IMAGE`, et éventuellement remplacer des
+  schematics par des rendus générés / les vrais PNG n8n (Cas 3 & 5).
 
 ## Décisions ouvertes / attentes
 - **2 PNG des workflows n8n** à fournir (pour Cas 3 & 5 en vraies captures).
