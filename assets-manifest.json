@@ -1,0 +1,10 @@
+{
+  "$schema": "./assets-manifest.schema.json",
+  "description": "Inventaire des assets visuels. Chaque entree image porte 'source' = 'screenshot_reel' | 'genere_higgsfield'. Pour les visuels generes remplacant un screenshot, renseigner 'replaces'.",
+  "charte_prompt": {
+    "palette": "fond quasi-noir #0A0B0D, un seul accent (a valider), neutres froids",
+    "matiere_eclairage": "studio sombre, mat + reflets verre discrets, une source d'accent, faible profondeur de champ, grain fin",
+    "abstraction": "schematique/topographique, aucun texte, aucun chiffre, aucune UI de marque, aucune personne"
+  },
+  "assets": []
+}
