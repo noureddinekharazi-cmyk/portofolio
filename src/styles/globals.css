@@ -16,7 +16,7 @@
   /* Ink (contrast on --color-base) */
   --color-ink: #e9ecf1; /* 15.6:1  AAA */
   --color-muted: #a6adb8; /*  8.1:1  AAA */
-  --color-faint: #838b97; /*  5.0:1  AA  — measurement notes */
+  --color-faint: #9aa1ad; /*  6.5:1  AA on base & surface — small notes */
 
   /* Accent — signal cyan */
   --color-accent: #5ee6ff; /* 12.4:1 on base */
@@ -205,26 +205,23 @@
   }
 
   /* Progressive-enhancement reveal.
-     Default (no JS): fully visible. With JS (html.js): offset then revealed. */
+     Transform-only (no fade): text stays full-opacity, so it is always readable
+     and never trips contrast checks; a subtle slide-up plays as enhancement.
+     Default (no JS) and reduced-motion: no transform at all. */
   .reveal {
     opacity: 1;
   }
   html.js .reveal {
-    opacity: 0;
-    transform: translateY(16px);
-    transition:
-      opacity 0.5s var(--ease-out),
-      transform 0.5s var(--ease-out);
+    transform: translateY(14px);
+    transition: transform 0.55s var(--ease-out);
     transition-delay: var(--reveal-delay, 0ms);
-    will-change: opacity, transform;
+    will-change: transform;
   }
   html.js .reveal[data-in='true'] {
-    opacity: 1;
     transform: none;
   }
   @media (prefers-reduced-motion: reduce) {
     html.js .reveal {
-      opacity: 1;
       transform: none;
       transition: none;
     }

@@ -26,7 +26,6 @@ export async function MetricsBand({ locale }: { locale: string }) {
             <Link
               href={`/case/${m.caseSlug}`}
               className="group flex h-full flex-col justify-between gap-6 bg-base p-6 transition-colors hover:bg-surface focus-visible:bg-surface md:p-8"
-              aria-label={`${m.label} — ${t('a11y.metricLink')}`}
             >
               <div>
                 <div className="flex items-baseline font-semibold tracking-tight">

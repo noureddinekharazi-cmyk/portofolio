@@ -10,8 +10,8 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      // CV shortcuts served from /public/cv
-      { source: '/cv', destination: '/cv/nour-eddine-kharazi-fr.pdf', permanent: false },
+      // CV shortcut → currently the available (EN) PDF; update when FR is added
+      { source: '/cv', destination: '/cv/nour-eddine-kharazi-en.pdf', permanent: false },
     ];
   },
 };

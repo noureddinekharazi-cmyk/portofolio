@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { notFound } from 'next/navigation';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
@@ -16,6 +16,11 @@ import '@/styles/globals.css';
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
+
+export const viewport: Viewport = {
+  themeColor: '#0a0b0d',
+  colorScheme: 'dark',
+};
 
 export async function generateMetadata({
   params,
@@ -94,7 +99,8 @@ export default async function LocaleLayout({
           <Footer />
           <SiteJsonLd locale={locale} />
         </NextIntlClientProvider>
-        <Analytics />
+        {/* Vercel Analytics (cookieless) — only on Vercel, avoids a 404 off-platform */}
+        {process.env.VERCEL && <Analytics />}
       </body>
     </html>
   );
