@@ -2,6 +2,7 @@ import { setRequestLocale } from 'next-intl/server';
 import { getTranslations } from 'next-intl/server';
 import { Hero } from '@/components/sections/Hero';
 import { MetricsBand } from '@/components/sections/MetricsBand';
+import { CasesSection } from '@/components/sections/CasesSection';
 
 export default async function HomePage({
   params,
@@ -14,7 +15,6 @@ export default async function HomePage({
 
   // Sections built in later lots — anchors kept so the nav resolves.
   const stubs = [
-    { id: 'cases', key: 'cases' },
     { id: 'stack', key: 'stack' },
     { id: 'labs', key: 'labs' },
     { id: 'path', key: 'path' },
@@ -25,6 +25,7 @@ export default async function HomePage({
     <>
       <Hero locale={locale} />
       <MetricsBand locale={locale} />
+      <CasesSection locale={locale} />
       {stubs.map((s) => (
         <section
           key={s.id}

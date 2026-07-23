@@ -1,54 +1,70 @@
 'use client';
 
-import { motion, useReducedMotion, type Variants } from 'framer-motion';
-import type { ReactNode } from 'react';
-
-const variants: Variants = {
-  hidden: { opacity: 0, y: 18 },
-  visible: (i: number = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      delay: i * 0.06,
-      ease: [0.16, 1, 0.3, 1],
-    },
-  }),
-};
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 
 /**
- * Scroll-reveal wrapper. Honors prefers-reduced-motion by rendering
- * content statically (no transform, no delay) so information never waits.
+ * Progressive-enhancement scroll reveal.
+ *
+ * Content is visible by default (no JS, slow hydration, crawlers → readable).
+ * When JS is active (`html.js`), the element starts subtly offset and reveals
+ * on scroll via IntersectionObserver. `prefers-reduced-motion` is honored in CSS.
+ * No animation ever gates access to information.
  */
 export function Reveal({
   children,
   index = 0,
   className,
-  as = 'div',
+  as: Tag = 'div',
 }: {
   children: ReactNode;
   index?: number;
   className?: string;
-  as?: 'div' | 'li' | 'section' | 'article';
+  as?: 'div' | 'li' | 'section' | 'article' | 'header';
 }) {
-  const reduce = useReducedMotion();
-  const MotionTag = motion[as];
+  const ref = useRef<HTMLElement | null>(null);
+  const [shown, setShown] = useState(false);
 
-  if (reduce) {
-    const Tag = as;
-    return <Tag className={className}>{children}</Tag>;
-  }
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (typeof IntersectionObserver === 'undefined') {
+      setShown(true);
+      return;
+    }
+    // Already within (or above) the viewport on mount → show immediately.
+    if (el.getBoundingClientRect().top < window.innerHeight) {
+      setShown(true);
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setShown(true);
+            io.disconnect();
+          }
+        }
+      },
+      { rootMargin: '0px 0px -10% 0px', threshold: 0.05 },
+    );
+    io.observe(el);
+    // Safety net: never leave content hidden if the observer never fires.
+    const fallback = window.setTimeout(() => setShown(true), 2500);
+    return () => {
+      io.disconnect();
+      window.clearTimeout(fallback);
+    };
+  }, []);
 
   return (
-    <MotionTag
-      className={className}
-      custom={index}
-      variants={variants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: '0px 0px -12% 0px' }}
+    <Tag
+      // @ts-expect-error -- ref type varies by tag, safe at runtime
+      ref={ref}
+      className={['reveal', className].filter(Boolean).join(' ')}
+      data-in={shown ? 'true' : 'false'}
+      style={{ '--reveal-delay': `${index * 60}ms` } as React.CSSProperties}
     >
       {children}
-    </MotionTag>
+    </Tag>
   );
 }

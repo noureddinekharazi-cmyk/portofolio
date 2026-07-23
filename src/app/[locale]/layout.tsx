@@ -79,6 +79,12 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <body>
+        {/* Enable JS-gated reveal styles before first paint (no FOUC, no-JS safe) */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('js')",
+          }}
+        />
         <NextIntlClientProvider>
           <a href="#main" className="skip-link">
             {locale === 'fr' ? 'Aller au contenu' : 'Skip to content'}

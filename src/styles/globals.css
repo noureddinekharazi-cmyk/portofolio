@@ -204,6 +204,32 @@
     color: transparent;
   }
 
+  /* Progressive-enhancement reveal.
+     Default (no JS): fully visible. With JS (html.js): offset then revealed. */
+  .reveal {
+    opacity: 1;
+  }
+  html.js .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 0.5s var(--ease-out),
+      transform 0.5s var(--ease-out);
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform;
+  }
+  html.js .reveal[data-in='true'] {
+    opacity: 1;
+    transform: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html.js .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
   /* Accessible skip link — hidden until focused */
   .skip-link {
     position: fixed;

@@ -1,0 +1,68 @@
+---
+slug: seo-operating-system
+order: 1
+pillar: seo
+company: dormakaba France
+role: Digital / Data Marketing Manager
+period: 2025 — 2026
+title: SEO Operating System — an SEO pipeline that runs itself
+summary: >-
+  An automated SEO system, in production, built with Claude Code and hosted on
+  GitHub. It runs twice a week, without me.
+metricDisplay: 2× / wk
+metricLabel: Autonomous SEO pipeline in production
+illustration:
+  variant: system
+  source: schematic
+  alt: >-
+    Abstract diagram of an automated pipeline architecture: a trigger node linked
+    to several agents, then to reporting outputs.
+  caption: >-
+    Pipeline architecture: scheduled trigger, analysis agents, opportunity
+    scoring, brief generation, reporting.
+context: >-
+  Recurring SEO work — Search Console analysis, spotting opportunities, writing
+  briefs, reporting — eats up a lot of time and happens in fits and starts. I
+  wanted to make it continuous and autonomous.
+problem: >-
+  A recurring, time-consuming task, never quite finished — and therefore never
+  done at the right cadence.
+approach:
+  - >-
+    I designed and deployed an automated SEO system in production, built with
+    Claude Code and hosted on GitHub, with scheduled runs twice a week, on Monday
+    and Friday.
+  - >-
+    The architecture is built on Skills, Subagents and scheduled Routines.
+  - >-
+    The pipeline analyzes Google Search Console data, monitors visibility in AI
+    answer engines (GEO), automatically scores opportunities, generates content
+    briefs and produces a weekly report.
+obstacle: >-
+  Several frictions solved in production, not on paper: an org policy requiring
+  Desktop OAuth credentials rather than a service account, false positives from
+  bot detection in the execution environment, and pinning down the right Search
+  Console property. Nothing spectacular — just what it takes to debug so a system
+  actually holds.
+result: >-
+  A system that runs on its own, twice a week. And, above all, GEO monitoring in
+  place when almost no marketing team yet tracks its visibility in AI-generated
+  answers. A head start, not a technical project.
+measure: >-
+  This case is measured by the system's autonomy and the head start on the GEO
+  signal, not by a percentage — owning that is more credible than fabricating a
+  precise number.
+stack:
+  - Claude Code
+  - GitHub Actions
+  - Google Search Console API
+  - GA4
+  - Python
+aside:
+  title: Related work
+  body: >-
+    A full SEO strategy and content audit for dormakaba France (GSC + GA4 via
+    Windsor.ai): eleven Notion bases, sprint roadmaps and KPI trackers. Plus a
+    UX/UI redesign of the Training Center page (responsive HTML/CSS), built for
+    B2B conversion.
+---
